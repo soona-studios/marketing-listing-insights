@@ -1,2 +1,1 @@
-# marketing-listing-insights
-Javascript to be deployed via a CDN to our Webflow soona.co marketing site. This controls the logic for processing an amazon product or shopify store link, sending it to Respell, then changing the copy based on the result from respell/
+When you pull this repository, you can test it by setting up a local python server. Navigate into the pulled directory of this repo and run `python3 -m http.server`. Then this repo is hosted at `http://localhost:8000/bg_changer.html`. You can also host this on our soona-local ngrok by runnning the python server, then visiting the directory and running `ngrok http --domain=local.soona.co 8000`.
