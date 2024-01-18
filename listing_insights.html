@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <!-- Splide CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.2.2/dist/css/splide-core.min.css">
-    <script src="listing_insights.js"  type="module"></script>
+    <script src="listing_insights_test.js"  type="module"></script>
   </head>
   <body>
     <div class="page-wrapper">
@@ -179,12 +179,12 @@
                         <div class="insights_results-target-wrap"><img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e095fbb4fd223c40fca9b_bullzie-Icon.webp" loading="lazy" width="256" alt="" class="insights_results_traget-icon"/></div>
                         <div class="insights_results-title">
                           <div class="ch-allcaps-subheading-14 is-insights-results">optimizations identified</div>
-                          <div class="ch-h5 is-insights-results">Champion Sports Official Rubber Basketballs</div>
+                          <div id="product_or_store" class="ch-h5 is-insights-results">Champion Sports Official Rubber Basketballs</div>
                         </div>
                       </div>
-                      <h2 class="martines-display is-insights-results">toys &amp; hobbies</h2>
-                      <p class="insights-fact-p"><strong>did you know:</strong> <span class="insights_fact">91% of sellers in the “toys &amp; hobbies” industry are third party sellers? Competition is plentiful and we have clear steps you can take to improve your chances of standing out from the crowd.</span></p>
-                      <div class="margin-top margin-medium is-flex-align-left"><a href="#" class="button is-insights-results w-button">see your 3+ recommendations</a></div>
+                      <h2 id="industry_title" class="martines-display is-insights-results">toys &amp; hobbies</h2>
+                      <p class="insights-fact-p"><strong>did you know:</strong> <span id="insight_fact" class="insights_fact">91% of sellers in the “toys &amp; hobbies” industry are third party sellers? Competition is plentiful and we have clear steps you can take to improve your chances of standing out from the crowd.</span></p>
+                      <div class="margin-top margin-medium is-flex-align-left"><a id="see_recommendations_button" href="#" class="button is-insights-results w-button">see your 3+ recommendations</a></div>
                     </div>
                     <div class="insights_results-top-item">
                       <div>
@@ -206,12 +206,12 @@
                         <img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e519ae8b64af9cc2ae490_product-image.webp" loading="lazy" width="334" sizes="(max-width: 479px) 100vw, (max-width: 767px) 23vw, (max-width: 1279px) 11vw, (max-width: 1439px) 10vw, 128px" alt="" srcset="https://assets-global.website-files.com/622327bc87949d02598242bf/656e519ae8b64af9cc2ae490_product-image-p-500.webp 500w, https://assets-global.website-files.com/622327bc87949d02598242bf/656e519ae8b64af9cc2ae490_product-image.webp 668w" class="insights_profile-image"/>
                         <div class="insights_profile-info">
                           <div class="insights_profile-score-wrap">
-                            <div class="ch-h3 is-insights-fluid">64</div>
+                            <div id="insight_average_score" class="ch-h3 is-insights-fluid">64</div>
                             <div class="ch-h5 is-insights-score">/100</div>
                           </div>
-                          <div class="ch-h5 is-insights-fluid">&quot;toys and hobbies&quot; listing</div>
+                          <div id="insight_industry" class="ch-h5 is-insights-fluid">&quot;toys and hobbies&quot; listing</div>
                           <div class="insights_profile-photo-count">
-                            <div>Amazon</div>
+                            <div id="listing_platform">Amazon</div>
                             <img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e55d23c0ee430b681bbd4_dot.webp" loading="lazy" width="6" alt="" class="insights_profile-dot"/>
                             <div>4</div>
                             <div>photos</div>
@@ -228,7 +228,7 @@
                             <div class="insights_score-title">image quality</div>
                           </div>
                           <div class="insights_score-score">
-                            <div class="ch-h4 is-insights-fluid">87</div>
+                            <div id="listing_image_quality_score" class="ch-h4 is-insights-fluid">87</div>
                             <img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e5919c5819feeaae45d1b_arrow-right.webp" loading="lazy" width="256" alt="" class="insights_score-arrow"/>
                           </div>
                         </a>
@@ -238,7 +238,7 @@
                             <div class="insights_score-title">gallery count</div>
                           </div>
                           <div class="insights_score-score">
-                            <div class="ch-h4 is-insights-fluid">20</div>
+                            <div id="listing_gallery_count_score" class="ch-h4 is-insights-fluid">20</div>
                             <img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e5919c5819feeaae45d1b_arrow-right.webp" loading="lazy" width="256" alt="" class="insights_score-arrow"/>
                           </div>
                         </a>
@@ -248,7 +248,7 @@
                             <div class="insights_score-title">visual mix</div>
                           </div>
                           <div class="insights_score-score">
-                            <div class="ch-h4 is-insights-fluid">76</div>
+                            <div id="listing_visual_mix_score" class="ch-h4 is-insights-fluid">76</div>
                             <img src="https://assets-global.website-files.com/622327bc87949d02598242bf/656e5919c5819feeaae45d1b_arrow-right.webp" loading="lazy" width="256" alt="" class="insights_score-arrow"/>
                           </div>
                         </a>
@@ -259,8 +259,8 @@
                         <h3 class="ch-h5 is-insights-cta">We’ve identified 6 key areas to improve your listing</h3>
                         <p class="insights_cta-p">plug in your account to explore industry-specific insights, view top competitors, and elevate ALL your product listings.</p>
                         <div class="margin-top margin-xmedium">
-                          <a href="#" class="button w-inline-block">
-                            <div>integrate with amazon</div>
+                          <a href="#" id="integrate_with_button" class="button w-inline-block">
+                            <div>integrate with <span id="listing_integration_platform">amazon</span></div>
                           </a>
                         </div>
                       </div>
