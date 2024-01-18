@@ -1,4 +1,4 @@
-const baseUrl = 'https://book.soona.co';
+const baseUrl = 'https://develop.soona.co';
 var pollCount = 0;
 const amazonSpell = 'hD-1jl0MbCkh9O15fU9iN';
 const shopifySpell = 'JFh3FTR4VW481NbPyXmH0';
