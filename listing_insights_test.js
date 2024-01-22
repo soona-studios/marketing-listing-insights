@@ -302,7 +302,7 @@ const hideElement = el => el.classList.add('hide');
 const showElement = el => el.classList.remove('hide');
 
 document.addEventListener('DOMContentLoaded', function () {
-  let resetButton = document.getElementsByClassName('insights_results-reset')[0];
+  let resetButton = document.getElementById('insights_results_reset');
   let urlInput = document.getElementById('shop-URL');
   let submitButton = document.querySelectorAll('input[type=button]')[0];
   let integrateWithButton = document.getElementById('integrate_with_button');
