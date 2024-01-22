@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   console.log(submitButton);
   console.log(document.querySelectorAll('input[type=button]'));
-  document.querySelectorAll('input[type=submit]');
+  console.log(document.querySelectorAll('input[type=submit]'));
 
   submitButton.addEventListener('click', async () => {
     if (urlInput.value == '') { return; }
