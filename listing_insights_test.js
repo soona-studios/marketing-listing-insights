@@ -323,6 +323,10 @@ document.addEventListener('DOMContentLoaded', function () {
     showElement(industryForm);
   });
   
+  console.log(submitButton);
+  console.log(document.querySelectorAll('input[type=button]'));
+  document.querySelectorAll('input[type=submit]');
+
   submitButton.addEventListener('click', async () => {
     if (urlInput.value == '') { return; }
     await getIndustryFromURL(urlInput.value);
