@@ -304,7 +304,7 @@ const showElement = el => el.classList.remove('hide');
 document.addEventListener('DOMContentLoaded', function () {
   let resetButton = document.getElementById('insights_results_reset');
   let urlInput = document.getElementById('shop-URL');
-  let submitButton = document.querySelectorAll('input[type=button]')[0];
+  let submitButton = document.getElementsByClassName('button is-listing-insights')[0];
   let integrateWithButton = document.getElementById('integrate_with_button');
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
 
