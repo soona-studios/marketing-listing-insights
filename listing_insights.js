@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
     openAuthPortal();
   });
 
-  scoreCardLinks.array.forEach(element => {
+  Array.from(scoreCardLinks).forEach(element => {
     element.addEventListener('click', () => {
       openAuthPortal();
     });
