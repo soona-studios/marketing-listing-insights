@@ -315,6 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let submitButton = document.getElementsByClassName('button is-listing-insights')[0];
   let integrateWithButton = document.getElementById('integrate_with_button');
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
+  let scoreCardLinks = document.getElementsByClassName('insights_score-card');
   loadingSpinner = document.getElementsByClassName('insights-form_loading-overlay')[0];
 
   integrateWithButton.addEventListener('click', () => {
@@ -325,13 +326,19 @@ document.addEventListener('DOMContentLoaded', function () {
     openAuthPortal();
   });
 
+  scoreCardLinks.array.forEach(element => {
+    element.addEventListener('click', () => {
+      openAuthPortal();
+    });
+  });
+
   resetButton.addEventListener('click', () => {
     let industryForm = document.getElementsByClassName('insights_form-block')[0];
     let industryResults = document.getElementsByClassName('insights_results-wrap')[0];
     hideElement(industryResults);
     showElement(industryForm);
   });
-  
+
   submitButton.addEventListener('click', async () => {
     if (urlInput.value == '') { return; }
     await getIndustryFromURL(urlInput.value);
