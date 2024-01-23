@@ -144,6 +144,7 @@ accountId.addValueListener(value => {
 
 // variables
 let authToken = null,
+  loadingSpinner = null,
   listingPlatform = '';
 
 
@@ -250,6 +251,7 @@ async function castSpell(spellId, spellInputs) {
   };
 
   try {
+    addShowClass(loadingSpinner);
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -259,6 +261,7 @@ async function castSpell(spellId, spellInputs) {
     });
 
     if (!response.ok) {
+      removeShowClass(loadingSpinner);
       throw new Error("Sorry, something went wrong. Please try again.");
     }
 
@@ -269,6 +272,7 @@ async function castSpell(spellId, spellInputs) {
     }
   } catch (error) {
     console.error(error);
+    removeShowClass(loadingSpinner);
   }
 }
 
@@ -284,12 +288,14 @@ async function pollStatus(jobId) {
     } else if (data.status === "complete" && data.outputs.output) {
       updatePageIndustry(data.outputs.output);
       resetPollCount();
+      removeShowClass(loadingSpinner);
     } else {
+      removeShowClass(loadingSpinner);
       throw new Error("Sorry, something went wrong. Please try again.");
     }
   } catch (error) {
     console.error(error);
-
+    removeShowClass(loadingSpinner);
     resetPollCount();
   }
 }
@@ -300,6 +306,8 @@ function resetPollCount() {
 
 const hideElement = el => el.classList.add('hide');
 const showElement = el => el.classList.remove('hide');
+const addShowClass = el => el.classList.add('show');
+const removeShowClass = el => el.classList.remove('show');
 
 document.addEventListener('DOMContentLoaded', function () {
   let resetButton = document.getElementById('insights_results_reset');
@@ -307,6 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let submitButton = document.getElementsByClassName('button is-listing-insights')[0];
   let integrateWithButton = document.getElementById('integrate_with_button');
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
+  loadingSpinner = document.getElementsByClassName('insights-form_loading-overlay')[0];
 
   integrateWithButton.addEventListener('click', () => {
     openAuthPortal();
