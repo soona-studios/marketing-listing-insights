@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   submitButton.addEventListener('click', async () => {
-    linkClicked('url entry', submitButton.value, null);
+    linkClicked('url entry', submitButton.innerText, null);
     if (urlInput.value == '') { return; }
     await getIndustryFromURL(urlInput.value);
   });
