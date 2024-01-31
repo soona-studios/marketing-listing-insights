@@ -418,6 +418,28 @@ function resetPollCount() {
   pollCount = 0;
 }
 
+function getContextFromUrl() {
+  let url = window.location.href;
+  let splitUrl = url.split('/');
+  let context = splitUrl[splitUrl.length - 1];
+  context = context.replace(/[\-_]/g, ' ');
+  return context;
+}
+
+function linkClicked(subContext, linkLabel, linkHref) {
+  try {
+    analytics.track('Link Clicked',
+    {
+      context: getContextFromUrl(),
+      subContext: subContext,
+      linkLabel: linkLabel,
+      linkHref: linkHref,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 const hideElement = el => el.classList.add('hide');
 const showElement = el => el.classList.remove('hide');
 const addShowClass = el => el.classList.add('show');
@@ -433,15 +455,19 @@ document.addEventListener('DOMContentLoaded', function () {
   loadingSpinner = document.getElementsByClassName('insights-form_loading-overlay')[0];
 
   integrateWithButton.addEventListener('click', () => {
+    linkClicked('results body', integrateWithButton.innerText, null);
     openAuthPortal();
   });
 
   seeRecommendationsButton.addEventListener('click', () => {
+    linkClicked('results header', seeRecommendationsButton.innerText, null);
     openAuthPortal();
   });
 
   Array.from(scoreCardLinks).forEach(element => {
+    let title = element.getElementsByClassName('insights_score-title')[0].innerText;
     element.addEventListener('click', () => {
+      linkClicked('results body', title, null);
       openAuthPortal();
     });
   });
@@ -454,6 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   submitButton.addEventListener('click', async () => {
+    linkClicked('url entry', submitButton.value, null);
     if (urlInput.value == '') { return; }
     await getIndustryFromURL(urlInput.value);
   });
