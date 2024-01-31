@@ -452,6 +452,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let integrateWithButton = document.getElementById('integrate_with_button');
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
   let scoreCardLinks = document.getElementsByClassName('insights_score-card');
+  let formEntrySection = document.getElementById('email-form');
+  let formSuccessSection = document.getElementsByClassName('w-form-done')[0];
   loadingSpinner = document.getElementsByClassName('insights-form_loading-overlay')[0];
 
   integrateWithButton.addEventListener('click', () => {
@@ -475,6 +477,8 @@ document.addEventListener('DOMContentLoaded', function () {
   resetButton.addEventListener('click', () => {
     let industryForm = document.getElementsByClassName('insights_form-block')[0];
     let industryResults = document.getElementsByClassName('insights_results-wrap')[0];
+    formEntrySection.removeAttribute('style');
+    formSuccessSection.removeAttribute('style');
     hideElement(industryResults);
     showElement(industryForm);
   });
