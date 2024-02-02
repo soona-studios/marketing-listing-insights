@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
   let scoreCardLinks = document.getElementsByClassName('insights_score-card');
   let listingInsightsForm = document.getElementsByClassName('insights_form-block')[0];
-  let formEntrySection = document.getElementById('email-form');
+  let formEntrySection = listingInsightsForm.getElementsByClassName('insights-form')[0];
   let formSuccessSection = listingInsightsForm.getElementsByClassName('w-form-done')[0];
   loadingSpinner = listingInsightsForm.getElementsByClassName('insights-form_loading-overlay')[0];
 
