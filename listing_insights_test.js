@@ -452,9 +452,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let integrateWithButton = document.getElementById('integrate_with_button');
   let seeRecommendationsButton = document.getElementById('see_recommendations_button');
   let scoreCardLinks = document.getElementsByClassName('insights_score-card');
+  let listingInsightsForm = document.getElementsByClassName('insights_form-block')[0];
   let formEntrySection = document.getElementById('email-form');
-  let formSuccessSection = document.getElementsByClassName('w-form-done')[0];
-  loadingSpinner = document.getElementsByClassName('insights-form_loading-overlay')[0];
+  let formSuccessSection = listingInsightsForm.getElementsByClassName('w-form-done')[0];
+  loadingSpinner = listingInsightsForm.getElementsByClassName('insights-form_loading-overlay')[0];
 
   integrateWithButton.addEventListener('click', () => {
     linkClicked('results body', integrateWithButton.innerText, null);
