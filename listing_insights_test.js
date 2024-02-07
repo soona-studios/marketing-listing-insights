@@ -214,66 +214,17 @@ const industryDetailsHash = {
   },
 };
 
-// reactive objects
-const accountId = {
-  value: null,
-  set(value) {
-    this.value = value;
-    this.valueListener(value);
-  },
-  get() {
-    return this.value;
-  },
-  valueListener(value) {},
-  addValueListener: function (listener) {
-    this.valueListener = listener;
-  },
-};
-
-accountId.addValueListener(value => {
-  if (!value) return;
-  else {
-    navigationProcess();
-  }
-});
-
-
 // variables
-let authToken = null,
-  loadingSpinner = null,
+let loadingSpinner = null,
   listingPlatform = '';
-
-
-// auth portal
-
-function receiveMessage(event) {
-  if (event.origin !== baseUrl) return;
-  let splitData = event.data.split(',');
-  authToken = splitData[1].split(':')[1];
-  if (!authToken || authToken === 'null' || authToken === 'undefined') return;
-  accountId.set(splitData[0].split(':')[1]);
-}
-
-function openAuthPortal() {
-  let popupWinWidth = 500;
-  let popupWinHeight = 600;
-  let left = window.screenX + (window.outerWidth - popupWinWidth) / 2;
-  let top = window.screenY + (window.outerHeight - popupWinHeight) / 2;
-  let popUpUrl = `${baseUrl}/#/sign-up?isExternalAuthPortal=true&redirect=/sign-in%3FisExternalAuthPortal=true`;
-  let newWindow = window.open(popUpUrl,'google window','width='+popupWinWidth+',height='+popupWinHeight+',top='+top+',left='+left);
-  if (window.focus) {newWindow.focus()}
-  // add event listener to receive message from auth portal
-  window.addEventListener('message', receiveMessage, false);
-}
 
 //functions
 async function navigationProcess() {
-  if(!authToken || authToken === 'null' || authToken === 'undefined') return;
   window.location.href = createListingInsightsPath();
 }
 
 function createListingInsightsPath() {
-  let path = `${baseUrl}/#/account/${accountId.get()}/listing-insights`;
+  let path = `${baseUrl}/#/account/{accountId}/listing-insights`;
   return path;
 }
 
@@ -459,19 +410,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   integrateWithButton.addEventListener('click', () => {
     linkClicked('results body', integrateWithButton.innerText, null);
-    openAuthPortal();
+    navigationProcess();
   });
 
   seeRecommendationsButton.addEventListener('click', () => {
     linkClicked('results header', seeRecommendationsButton.innerText, null);
-    openAuthPortal();
+    navigationProcess();
   });
 
   Array.from(scoreCardLinks).forEach(element => {
     let title = element.getElementsByClassName('insights_score-title')[0].innerText;
     element.addEventListener('click', () => {
       linkClicked('results body', title, null);
-      openAuthPortal();
+      navigationProcess();
     });
   });
 
