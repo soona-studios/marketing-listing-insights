@@ -224,7 +224,7 @@ async function navigationProcess() {
 }
 
 function createListingInsightsPath() {
-  let path = `${baseUrl}/#/account/{accountId}/listing-insights`;
+  let path = `${baseUrl}/#/account/<accountId>/listing-insights`;
   return path;
 }
 
