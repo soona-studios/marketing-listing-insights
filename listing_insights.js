@@ -224,7 +224,7 @@ async function navigationProcess() {
 }
 
 function createListingInsightsPath() {
-  let path = `${baseUrl}/#/account/<accountId>/listing-insights`;
+  let path = `${baseUrl}/user/anytime#/sign-up?account_creation_source=listing_insights&redirect=/account/<accountId>/listing-insights`;
   return path;
 }
 
