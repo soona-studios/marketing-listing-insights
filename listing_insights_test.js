@@ -301,42 +301,46 @@ async function getIndustryFromURL(url) {
 }
 
 async function castSpell(spellId, spellInputs) {
-  const url = `${baseUrl}/api/predictions`;
-  const payload = {
-    generate: {
-      provider: "respell",
-      payload: {
-        spellId: spellId,
-        inputs: spellInputs,
-      },
-    },
-  };
 
-  try {
-    addShowClass(loadingSpinner);
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+  updatePageIndustry('title: personal brand\nindustry: other');
+  removeShowClass(loadingSpinner);
 
-    if (!response.ok) {
-      updatePageIndustry('title: personal brand\nindustry: other');
-      removeShowClass(loadingSpinner);
-    }
+  // const url = `${baseUrl}/api/predictions`;
+  // const payload = {
+  //   generate: {
+  //     provider: "respell",
+  //     payload: {
+  //       spellId: spellId,
+  //       inputs: spellInputs,
+  //     },
+  //   },
+  // };
 
-    const responseData = await response.json();
+  // try {
+  //   addShowClass(loadingSpinner);
+  //   const response = await fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(payload),
+  //   });
 
-    if (responseData.provider_job_id) {
-      pollStatus(responseData.provider_job_id);
-    }
-  } catch (error) {
-    console.error(error);
-    updatePageIndustry('title: personal brand\nindustry: other');
-    removeShowClass(loadingSpinner);
-  }
+  //   if (!response.ok) {
+  //     updatePageIndustry('title: personal brand\nindustry: other');
+  //     removeShowClass(loadingSpinner);
+  //   }
+
+  //   const responseData = await response.json();
+
+  //   if (responseData.provider_job_id) {
+  //     pollStatus(responseData.provider_job_id);
+  //   }
+  // } catch (error) {
+  //   console.error(error);
+  //   updatePageIndustry('title: personal brand\nindustry: other');
+  //   removeShowClass(loadingSpinner);
+  // }
 }
 
 async function pollStatus(jobId) {
